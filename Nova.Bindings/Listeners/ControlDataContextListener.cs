@@ -16,6 +16,7 @@
 // 
 #endregion
 
+using System;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using Nova.Bindings.Base;
@@ -44,13 +45,11 @@ namespace Nova.Bindings.Listeners
                 definition = manager.GetDefinition(id);
             }
 
-            Contract.Assume(element is IHaveSettings, "The control has to implement IHasSettings");
             ((IHaveSettings)element).Settings = definition;
         }
 
         protected override void OnDataContextDisconnected(FrameworkElement element)
         {
-            Contract.Assume(element is IHaveSettings, "The control has to implement IHasSettings");
             ((IHaveSettings)element).Settings = null;
         }
     }

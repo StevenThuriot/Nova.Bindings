@@ -89,10 +89,10 @@ namespace Nova.Bindings
 
         private static void OnSettingsChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
+            Contract.Requires<NotSupportedException>(EnsureTemplate(e.NewValue as IDefinition), "Template does not match settings.");
+            
             var settings = (IDefinition) e.NewValue;
             var editor = (ValueEditor)dependencyObject;
-
-            Contract.Ensures(EnsureTemplate(settings), "Template does not match settings.");
 
             if (settings == null)
             {
@@ -104,6 +104,7 @@ namespace Nova.Bindings
             }
         }
 
+        [Pure]
         private static bool EnsureTemplate(IDefinition settings)
         {
             if (settings == null) return true;

@@ -27,7 +27,7 @@ using Nova.Bindings.Metadata;
 
 namespace Nova.Bindings
 {
-    public class ValueBindingExtension : NovaMarkUpExtension
+    public sealed class ValueBindingExtension : NovaMarkUpExtension
     { 
         public ValueBindingExtension(PropertyPath path) : base(path)
         {
@@ -39,7 +39,8 @@ namespace Nova.Bindings
 
         protected override object ProvideValue(IServiceProvider serviceProvider, IProvideValueTarget target)
         {
-            Contract.Assume(target.TargetObject is IHaveSettings, "The target has to implement IHaveSettings");
+            if (!(target.TargetObject is IHaveSettings))
+                throw new NotSupportedException("The target has to implement IHaveSettings");
 
             var targetObject = (FrameworkElement) target.TargetObject;
 

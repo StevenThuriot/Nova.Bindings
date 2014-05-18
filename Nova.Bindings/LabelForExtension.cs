@@ -25,7 +25,7 @@ using Nova.Bindings.Listeners;
 
 namespace Nova.Bindings
 {
-    public class LabelForExtension : ResolvableNovaMarkUpExtension
+    public sealed class LabelForExtension : ResolvableNovaMarkUpExtension
     {
         public LabelForExtension(PropertyPath path)
             : base(path, ResolveMode.Once)

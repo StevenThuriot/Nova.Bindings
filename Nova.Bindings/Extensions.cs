@@ -85,8 +85,7 @@ namespace Nova.Bindings
         {
             Contract.Requires<ArgumentNullException>(dependencyObject != null, "The supplied dependency object can't be null.");
 
-            var dataContext = dependencyObject.GetValue(FrameworkElement.DataContextProperty) ??
-                              dependencyObject.GetValue(FrameworkContentElement.DataContextProperty);
+            var dataContext = dependencyObject.GetValue(FrameworkElement.DataContextProperty);
 
             if (dataContext == null)
                 return null;
