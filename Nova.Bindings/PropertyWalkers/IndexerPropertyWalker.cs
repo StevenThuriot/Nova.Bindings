@@ -40,13 +40,10 @@ namespace Nova.Bindings.PropertyWalkers
             var declaringType = getMethod.DeclaringType;
             var returnType = getMethod.ReturnType;
 
-            var indexer = returnType.GetProperties().First(x =>
-            {
-                var indexParameters = x.GetIndexParameters();
-                if (indexParameters.Length != 1) return false;
+            var indexerProperties = returnType.GetProperties();
 
-                return indexParameters[0].ParameterType == typeof(string);
-            });
+            var indexer =  indexerProperties.FirstOrDefault(x => FindIndexerByType(x, typeof(string))) 
+                            ?? indexerProperties.First     (x => FindIndexerByType(x, typeof(object)));
 
             var obj = Expression.Parameter(typeof(object), "model");
 
@@ -57,6 +54,14 @@ namespace Nova.Bindings.PropertyWalkers
             var expr = Expression.Lambda<Func<object, object>>(box, obj);
 
             return expr.Compile();
+        }
+
+        private static bool FindIndexerByType(PropertyInfo propertyInfo, Type type)
+        {
+            var indexParameters = propertyInfo.GetIndexParameters();
+            if (indexParameters.Length != 1) return false;
+
+            return indexParameters[0].ParameterType == type;
         }
     }
 }
