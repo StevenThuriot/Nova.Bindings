@@ -1,4 +1,4 @@
-Nova Bindings
+Nova Bindings [![Build status](https://ci.appveyor.com/api/projects/status/h8tgvuk2xju8e2t7)](https://ci.appveyor.com/project/StevenThuriot/nova-bindings)
 ====
 
 * Model first approach to WPF view designs.
