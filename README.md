@@ -15,7 +15,7 @@ These markup extensions will resolve the property path passed to them and config
 
 ```xml
 
-<TextBlock Grid.Column="0" Text="{LabelFor Model.Property}" />
-<TextBox   Grid.Column="1" Text="{ValueBinding Model.Property}" />
+<TextBlock   Grid.Column="0" Text="{LabelFor Model.Property}" />
+<ValueEditor Grid.Column="1" Text="{ValueBinding Model.Property}" />
 
 ```
