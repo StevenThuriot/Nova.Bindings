@@ -9,3 +9,11 @@ Nova Bindings [![Build status](https://ci.appveyor.com/api/projects/status/h8tgv
 	* ValueBinding markup extension
 	
 These markup extensions will resolve the property path passed to them and configure your labels and controls accordingly.
+
+
+```xml
+
+<TextBlock Grid.Column="0" Text="{LabelFor Model.Property}" />
+<TextBox   Grid.Column="1" Text="{ValueBinding Model.Property}" />
+
+```
