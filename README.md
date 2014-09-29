@@ -11,6 +11,8 @@ Nova Bindings [![Build status](https://ci.appveyor.com/api/projects/status/h8tgv
 These markup extensions will resolve the property path passed to them and configure your labels and controls accordingly.
 
 
+#Sample
+
 ```xml
 
 <TextBlock Grid.Column="0" Text="{LabelFor Model.Property}" />
