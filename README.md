@@ -54,6 +54,13 @@ public class NovaSettingsManager : ISettingsManager
 	public NovaSettingsManager()
 	{
 		_definitions = new Dictionary<string, IDefinition>();
+		
+		//TODO;
+		_factory = new ComboBoxFactory() //Good starter since it's a special case.
+		_factory.SetSuccessor(new RadioButtonFactory())
+			.SetSuccessor(new CheckBoxFactory())
+			//..........
+			.SetSuccessor(new TextBoxFactory()); //Decent Fallback in case nothing matches.
 	}
 	
 	public IDefinition GetDefinition(string id)
@@ -77,9 +84,9 @@ abstract class DefinitionFactory
 {
 	protected DefinitionFactory _successor;
 	
-	public void SetSuccessor(DefinitionFactory successor)
+	public DefinitionFactory SetSuccessor(DefinitionFactory successor)
 	{
-		_successor = successor;
+		return _successor = successor;
 	}
 	
 	public IDefinition Create(string id)
@@ -100,7 +107,7 @@ abstract class DefinitionFactory
 		throw new NotSupportedException(id);
 	}
 	
-	public abstract IDefinition CreateDefinition(string id);
+	protected abstract IDefinition CreateDefinition(string id);
 }
 ```
 
