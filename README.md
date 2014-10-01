@@ -48,11 +48,59 @@ Next, create a settings manager.
 ```csharp
 public class NovaSettingsManager : ISettingsManager
 {
+	private readonly Dictionary<string, IDefinition> _definitions;
+	private readonly DefinitionFactory _factory;
+	
+	public NovaSettingsManager()
+	{
+		_definitions = new Dictionary<string, IDefinition>();
+	}
+	
 	public IDefinition GetDefinition(string id)
 	{
-		var definition = //TODO!
+		IDefinition definition;
+		
+		if (_definitions.TryGetValue(id, out definition)
+		{
+			return definition;
+		}
+		
+		definition = _factory.Create(id);
+		_definitions.Add(id, definition);
 		return definition;
 	}
+}
+
+
+//Sample [Chain Of Responsilibity](https://www.dofactory.com/net/chain-of-responsibility-design-pattern)
+abstract class DefinitionFactory
+{
+	protected DefinitionFactory _successor;
+	
+	public void SetSuccessor(DefinitionFactory successor)
+	{
+		_successor = successor;
+	}
+	
+	public IDefinition Create(string id)
+	{
+		var definition = CreateDefinition(id);
+		
+		if (definition != null)
+			return definition;
+		
+		if (_successor != null)
+		{
+			definition = _successor.Create(id);
+			
+			if (definition != null)
+				return definition;
+		}
+		
+		throw new NotSupportedException(id);
+	}
+	
+	public abstract IDefinition CreateDefinition(string id);
 }
 ```
 
