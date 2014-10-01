@@ -1,8 +1,8 @@
 Nova Bindings [![Build status](https://ci.appveyor.com/api/projects/status/h8tgvuk2xju8e2t7)](https://ci.appveyor.com/project/StevenThuriot/nova-bindings)
 ====
 
-* Model first approach to WPF view designs.
-* Ability to define metadata on your models to shape your view through the use of attributes.
+* Model first approach to WPF view designs. 
+* Stop caring about views first, instead add metadata to your model! Define metadata on your models to shape your view through the use of attributes.
 
 * Contains:
 	* LabelFor markup extension 
@@ -14,6 +14,10 @@ These markup extensions will resolve the property path passed to them and config
 #Usage
 
 ##Views
+
+Views become as simple as the following Label and Editor. It will be the only editor you'll ever use again!
+
+A change in the model? No problem! The Bindings will take care of it for you!
 
 ```xml
 
