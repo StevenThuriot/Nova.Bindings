@@ -213,6 +213,8 @@ Nova.Bindings.ValueEditor.ValueComboBoxEditor
 
 A template can easily be added by adding a similar template into the App's Resource Dictionary. Samples can be found [here](/Nova.Bindings/ValueEditor.xaml).
 
+Note that the Template keys are the same as the Editor constants that IDefinition supplies!
+
 ```xml
 <ControlTemplate x:Key="ValueTextEditor" TargetType="n:ValueEditor">
     <TextBox x:Name="PART_ValueEditor"
