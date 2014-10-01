@@ -95,7 +95,7 @@ public class Model : IHaveDynamicPropertySettings
 			}
 		}
 		
-		return ...
+		return field;
 	}
 }
 ```
