@@ -13,6 +13,14 @@ These markup extensions will resolve the property path passed to them and config
 
 #Usage
 
+Merge Nova.Bindings's pack URI to your project's ResourceDictionary.
+
+```xml
+<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="pack://application:,,,/Nova.Bindings;component/ValueEditor.xaml" />
+<ResourceDictionary.MergedDictionaries>
+```
+
 ##Views
 
 Views become as simple as the following Label and Editor. It will be the only editor you'll ever use again!
