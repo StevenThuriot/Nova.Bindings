@@ -2,7 +2,8 @@ Nova Bindings [![Build status](https://ci.appveyor.com/api/projects/status/h8tgv
 ====
 
 * Model first approach to WPF view designs. 
-* Stop caring about views first, instead add metadata to your model! Define metadata on your models to shape your view through the use of attributes.
+* Decouple view markup from your data. Instead, define metadata on your (view)models to shape your view through the use of attributes. 
+* You can even go a step further and retrieve the metadata at startup from your server's database. This allows you to change field types and labels without having to redeploy.
 
 * Contains:
 	* LabelFor markup extension 
