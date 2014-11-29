@@ -10,6 +10,7 @@ Nova Bindings [![Build status](https://ci.appveyor.com/api/projects/status/h8tgv
 	
 These markup extensions will resolve the property path passed to them and configure your labels and controls accordingly.
 
+![nova bindings](https://cloud.githubusercontent.com/assets/544444/5234817/8cb922ac-77dd-11e4-801d-bcf6bad9e994.png)
 
 #Usage
 

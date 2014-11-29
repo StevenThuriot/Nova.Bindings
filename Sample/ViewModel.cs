@@ -35,7 +35,7 @@ namespace Sample
             RadioButtonField1 = false;
             RadioButtonField2 = true;
             CheckBoxField = true;
-            ComboBoxField = "Item 2";
+            ComboBoxField = "Belgium";
             DatePickerField = DateTime.Now;
             DynamicField = "Dynamic Text";
             RandomField = "I have identity issues";

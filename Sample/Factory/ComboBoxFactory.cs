@@ -32,10 +32,10 @@ namespace Sample.Factory
             
             var items = new List<string>
             {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4"
+                "Austria",
+                "Belgium",
+                "Norway",
+                "The Netherlands"
             };
 
             return new ComboBoxDefinition(id, label, items);
