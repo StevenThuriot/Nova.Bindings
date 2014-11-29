@@ -147,6 +147,7 @@ namespace Nova.Bindings
             public const string ValueCheckBoxEditor = "ValueCheckBoxEditor";
             public const string ValueRadioButtonEditor = "ValueRadioButtonEditor";
             public const string ValueComboBoxEditor = "ValueComboBoxEditor";
+            public const string ValueDatePickerEditor = "ValueDatePickerEditor";
         }
     }
 }

@@ -17,7 +17,6 @@
 #endregion
 
 using System;
-using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;

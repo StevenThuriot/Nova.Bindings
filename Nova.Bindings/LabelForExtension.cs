@@ -27,9 +27,12 @@ namespace Nova.Bindings
 {
     public sealed class LabelForExtension : ResolvableNovaMarkUpExtension
     {
+        public bool AppendColon { get; set; }
+
         public LabelForExtension(PropertyPath path)
             : base(path, ResolveMode.Once)
         {
+            AppendColon = true;
         }
 
         protected override object ProvideValue(IServiceProvider serviceProvider, IProvideValueTarget target)
@@ -38,7 +41,7 @@ namespace Nova.Bindings
 
             if (textBlock != null)
             {
-                var listener = new TextBlockDataContextListener(Path, ResolveMode);
+                var listener = new TextBlockDataContextListener(Path, ResolveMode, AppendColon);
                 listener.AttachTo(textBlock);
 
                 textBlock.SetResourceReference(FrameworkElement.StyleProperty, "NovaTextBlock");
@@ -49,7 +52,7 @@ namespace Nova.Bindings
             var label = target.TargetObject as ContentControl; //Label is a ContentControl
             if (label != null)
             {
-                var listener = new ContentControlDataContextListener(Path, ResolveMode);
+                var listener = new ContentControlDataContextListener(Path, ResolveMode, AppendColon);
                 listener.AttachTo(label);
 
                 return label.Content;

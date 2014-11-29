@@ -18,7 +18,7 @@ Merge Nova.Bindings's pack URI to your project's ResourceDictionary.
 ```xml
 <ResourceDictionary.MergedDictionaries>
 		<ResourceDictionary Source="pack://application:,,,/Nova.Bindings;component/ValueEditor.xaml" />
-<ResourceDictionary.MergedDictionaries>
+</ResourceDictionary.MergedDictionaries>
 ```
 
 ##Views
@@ -30,9 +30,15 @@ A change in the model? No problem! The Bindings will take care of it for you!
 ```xml
 
 <TextBlock   Grid.Column="0" Text="{LabelFor Model.Property}" />
-<ValueEditor Grid.Column="1" Text="{ValueBinding Model.Property}" />
+<ValueEditor Grid.Column="1" Value="{ValueBinding Model.Property}" />
 
 ```
+
+The `LabelFor` binding has a property `AppendColon`, default `true`, which will append a colon to the label.
+
+The `ValueBinding` binding has two properties that can be set:
+* Mode ( == BindingMode, default BindingMode.Default )
+* Converter ( Default null )
 
 ##Implementation
 
@@ -68,18 +74,19 @@ public class NovaSettingsManager : ISettingsManager
 		_definitions = new Dictionary<string, IDefinition>();
 		
 		//TODO;
-		_factory = new ComboBoxFactory() //Good starter since it's a special case.
-		_factory.SetSuccessor(new RadioButtonFactory())
-			.SetSuccessor(new CheckBoxFactory())
-			//..........
-			.SetSuccessor(new TextBoxFactory()); //Decent Fallback in case nothing matches.
+		_factory = new ComboBoxFactory(); //Good starter since it's a special case.
+		_factory.SetSuccessor<RadioButtonFactory>()
+			    .SetSuccessor<CheckBoxFactory>()
+			    .SetSuccessor<DatePickerFactory>()
+			    //.......... 
+			    .SetSuccessor<TextBoxFactory>(); //Decent Fallback in case nothing matches.
 	}
 	
 	public IDefinition GetDefinition(string id)
 	{
 		IDefinition definition;
 		
-		if (_definitions.TryGetValue(id, out definition)
+		if (_definitions.TryGetValue(id, out definition))
 		{
 			return definition;
 		}
@@ -99,6 +106,12 @@ abstract class DefinitionFactory
 	public DefinitionFactory SetSuccessor(DefinitionFactory successor)
 	{
 		return _successor = successor;
+	}
+
+	public DefinitionFactory SetSuccessor<T>()
+		where T : DefinitionFactory, new()
+	{
+		return _successor = new T();
 	}
 	
 	public IDefinition Create(string id)
@@ -211,10 +224,10 @@ public interface IRadioButtonDefinition : IDefinition
 To make life easier, constants are available! The `Editor` is defined as a string rather than an enum to make it easier to add your own implementations!
 
 ```
-Nova.Bindings.ValueEditor.ValueTextEditor
-Nova.Bindings.ValueEditor.ValueCheckBoxEditor
-Nova.Bindings.ValueEditor.ValueRadioButtonEditor
-Nova.Bindings.ValueEditor.ValueComboBoxEditor
+Nova.Bindings.ValueEditor.Definitions.ValueTextEditor
+Nova.Bindings.ValueEditor.Definitions.ValueCheckBoxEditor
+Nova.Bindings.ValueEditor.Definitions.ValueRadioButtonEditor
+Nova.Bindings.ValueEditor.Definitions.ValueComboBoxEditor
 ```
 
 ###Templates

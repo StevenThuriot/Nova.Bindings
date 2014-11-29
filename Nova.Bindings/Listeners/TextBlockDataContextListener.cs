@@ -24,9 +24,12 @@ namespace Nova.Bindings.Listeners
 {
     class TextBlockDataContextListener : ResolvableDataContextListener<TextBlock>
     {
-        public TextBlockDataContextListener(PropertyPath path, ResolveMode resolveMode) 
+        private readonly bool _appendColon;
+
+        public TextBlockDataContextListener(PropertyPath path, ResolveMode resolveMode, bool appendColon) 
             : base(path, resolveMode)
         {
+            _appendColon = appendColon;
         }
 
         protected override bool OnResolvableDataContextChanged(TextBlock element, object dataContext)
@@ -42,7 +45,12 @@ namespace Nova.Bindings.Listeners
             var id = PropertyWalker.GetDefinitionId(dataContext, Path);
             var definition = manager.GetDefinition(id);
 
-            element.Text = definition.Label;
+            var label = definition.Label;
+
+            if (_appendColon)
+                label += ":";
+
+            element.Text = label;
             return true;
         }
     }

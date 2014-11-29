@@ -1,0 +1,54 @@
+﻿<Window x:Class="Sample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sample="clr-namespace:Sample"
+        mc:Ignorable="d"
+        Title="Nova.Bindings" Height="350" Width="525" d:DataContext="{d:DesignInstance sample:ViewModel}"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="{LabelFor TextField}" />
+        <ValueEditor Grid.Column="1" Grid.Row="0" Value="{ValueBinding TextField}" Margin="3" />
+
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="{LabelFor RadioButtonField1}" />
+        <ValueEditor Grid.Column="1" Grid.Row="1" Value="{ValueBinding RadioButtonField1}" Margin="3" />
+
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="{LabelFor RadioButtonField2}" />
+        <ValueEditor Grid.Column="1" Grid.Row="2" Value="{ValueBinding RadioButtonField2}" Margin="3" />
+
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="{LabelFor CheckBoxField}" />
+        <ValueEditor Grid.Column="1" Grid.Row="3" Value="{ValueBinding CheckBoxField}" Margin="3" />
+
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="{LabelFor ComboBoxField}" />
+        <ValueEditor Grid.Column="1" Grid.Row="4" Value="{ValueBinding ComboBoxField}" Margin="3" />
+
+        <TextBlock Grid.Column="0" Grid.Row="5" Text="{LabelFor DatePickerField}" />
+        <ValueEditor Grid.Column="1" Grid.Row="5" Value="{ValueBinding DatePickerField}" Margin="3" />
+
+        <TextBlock Grid.Column="0" Grid.Row="6" Text="{LabelFor DynamicField}" />
+        <ValueEditor Grid.Column="1" Grid.Row="6" Value="{ValueBinding DynamicField}" Margin="3" />
+
+        <TextBlock Grid.Column="0" Grid.Row="7" Text="{LabelFor RandomField}" />
+        <ValueEditor Grid.Column="1" Grid.Row="7" Value="{ValueBinding RandomField}" Margin="3" />
+
+
+    </Grid>
+</Window>

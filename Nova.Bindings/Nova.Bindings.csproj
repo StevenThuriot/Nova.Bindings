@@ -120,6 +120,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Base\ResolvableNovaMarkUpExtension.cs" />
+    <Compile Include="DefaultDefinitions\ComboBoxDefinition.cs" />
+    <Compile Include="DefaultDefinitions\Definition.cs" />
+    <Compile Include="DefaultDefinitions\DefinitionFactory.cs" />
+    <Compile Include="DefaultDefinitions\RadioButtonDefinition.cs" />
     <Compile Include="Listeners\ControlDataContextListener.cs" />
     <Compile Include="Listeners\ResolvableDataContextListener.cs" />
     <Compile Include="Listeners\TextBlockDataContextListener.cs" />

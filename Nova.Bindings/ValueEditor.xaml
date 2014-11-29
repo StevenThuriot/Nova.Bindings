@@ -52,5 +52,13 @@ License -->
 
     </ControlTemplate>
 
+    <ControlTemplate x:Key="ValueDatePickerEditor" TargetType="n:ValueEditor">
+
+        <DatePicker x:Name="PART_ValueEditor" 
+                    IsTodayHighlighted="True"
+                    SelectedDate="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+
+    </ControlTemplate>
+
     <!-- TODO: Add more templates -->
 </ResourceDictionary>
