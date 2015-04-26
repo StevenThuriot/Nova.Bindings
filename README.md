@@ -229,6 +229,7 @@ Nova.Bindings.ValueEditor.Definitions.ValueTextEditor
 Nova.Bindings.ValueEditor.Definitions.ValueCheckBoxEditor
 Nova.Bindings.ValueEditor.Definitions.ValueRadioButtonEditor
 Nova.Bindings.ValueEditor.Definitions.ValueComboBoxEditor
+Nova.Bindings.ValueEditor.Definitions.ValueDatePickerEditor 
 ```
 
 ###Templates
